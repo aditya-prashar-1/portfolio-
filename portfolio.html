@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Prashar | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    /* --- Animated Background --- */
+    @keyframes move {
+      100% {
+        transform: translate3d(0, 0, 1px) rotate(360deg);
+      }
+    }
+    .background {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      background: #0d1117;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .background span {
+      width: 20vmin;
+      height: 20vmin;
+      border-radius: 20vmin;
+      backface-visibility: hidden;
+      position: absolute;
+      animation: move;
+      animation-duration: 45s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    .background span:nth-child(0) {
+      color: #161b22;
+      top: 96%;
+      left: 77%;
+      animation-duration: 40s;
+      animation-delay: -1s;
+      transform-origin: -1vw -11vh;
+      box-shadow: 40vmin 0 5.1vmin currentColor;
+    }
+    .background span:nth-child(1) {
+      color: #1e293b;
+      top: 20%;
+      left: 20%;
+      animation-duration: 50s;
+      animation-delay: -5s;
+      transform-origin: 15vw 20vh;
+      box-shadow: -40vmin 0 12vmin currentColor;
+    }
+    .background span:nth-child(2) {
+      color: #0c4a6e;
+      top: 80%;
+      left: 80%;
+      animation-duration: 35s;
+      animation-delay: -10s;
+      transform-origin: 5vw -5vh;
+      box-shadow: 40vmin 0 15vmin currentColor;
+    }
+
+    /* --- Glowing Pulse Animation --- */
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 10px 10px rgba(6, 182, 212, 0);
+      }
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e6edf3;
+      background-color: transparent;
+    }
+    .section-title {
+      @apply text-3xl font-bold text-gray-100 mb-8 text-center;
+    }
+    /* --- Glassmorphism Card Effect --- */
+    .card {
+      background: rgba(22, 27, 34, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      @apply p-6 rounded-xl shadow-lg transition-all duration-300 border border-gray-800;
+    }
+    .project-card {
+      @apply card block hover:border-cyan-400/50 hover:-translate-y-2 cursor-pointer;
+    }
+    .profile-pic {
+      @apply rounded-full w-40 h-40 md:w-48 md:h-48 border-4 border-cyan-500 shadow-xl object-cover;
+      animation: pulse 2.5s infinite;
+    }
+    .modal-overlay {
+      @apply fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 transition-opacity duration-300;
+    }
+    .modal-content {
+      background-color: #161b22;
+      @apply rounded-lg p-8 shadow-2xl w-full max-w-md m-4 transform transition-transform duration-300 scale-95 border border-gray-700;
+    }
+    .gradient-text {
+      @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="background">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Header & Navigation -->
+<header class="bg-[#0d1117]/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex-shrink-0">
+        <a href="#home" class="text-2xl font-bold text-white">Aditya Prashar</a>
+      </div>
+      <div class="hidden md:block">
+        <nav class="ml-10 flex items-baseline space-x-4">
+          <a href="#experience" class="nav-link text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+          <a href="#projects" class="nav-link text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+          <a href="#skills" class="nav-link text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+          <a href="#contact" class="nav-link text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+        </nav>
+      </div>
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+          <span class="sr-only">Open main menu</span>
+          <i data-feather="menu" class="block h-6 w-6"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="#experience" class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+      <a href="#projects" class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+      <a href="#skills" class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+      <a href="#contact" class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="pt-16 relative">
+  <!-- Hero & About Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
+        <div class="flex-shrink-0">
+          <img src="https://ibb.co/W16tDhV" alt="Aditya Prashar" class="profile-pic">
+        </div>
+        <div class="text-center md:text-left">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">
+            Hi, I'm <span class="gradient-text">Aditya Prashar</span>
+          </h1>
+          <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-6">
+            A Computer Science student with a passion for Machine Learning, Web Development, and building innovative solutions.
+          </p>
+          <p class="text-gray-400 max-w-2xl mb-8">
+            I have hands-on experience in machine learning, where I've built projects ranging from stock market prediction models to custom chatbot solutions. I am proficient in multiple programming languages and technologies and always eager to take on new challenges.
+          </p>
+          <div class="flex justify-center md:justify-start items-center space-x-4">
+            <a href="https://github.com/aditya-prashar-1" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors p-2">
+              <i data-feather="github" class="w-8 h-8"></i>
+            </a>
+            <a href="https://linkedin.com/in/Aditya-Prashar" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors p-2">
+              <i data-feather="linkedin" class="w-8 h-8"></i>
+            </a>
+            <!-- IMPORTANT: Replace '#' with a public link to your resume PDF. -->
+            <a href="https://drive.google.com/file/d/14hlGvyMmD0vhOL9hiJdHz2HAAev89BiW/view?usp=sharing" target="_blank" class="inline-flex items-center bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-700 transition-colors duration-300 shadow-lg shadow-cyan-500/30">
+              <i data-feather="download" class="w-4 h-4 mr-2"></i>
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title">Experience</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="card">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-xl font-bold text-cyan-400">Machine Learning Intern</h3>
+              <p class="font-semibold text-white">Goldsoil Realty</p>
+              <p class="text-sm text-gray-400">Apr 2025 - Jun 2025 | Texas, USA (Remote)</p>
+            </div>
+          </div>
+          <ul class="mt-4 list-disc list-inside space-y-2 text-gray-300">
+            <li>Built a Retrieval-Augmented Generation (RAG) agent using n8n to automate document retrieval for internal queries.</li>
+            <li>Created a Google Chat bot using Google Apps Script integrated with NotebookLM, enabling SOP access via dropdown-based selection.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title">Projects</h2>
+      <p class="text-center text-gray-400 -mt-4 mb-8">Click on a project to view it on GitHub.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <a href="https://github.com/aditya-prashar-1/Stock-Market-Prediction" target="_blank" class="project-card">
+          <h3 class="text-xl font-bold text-cyan-400 mb-2">Stock Market Prediction</h3>
+          <p class="mb-4">Developed a model to predict stock price trends using LSTM layers, achieving 95% accuracy with Apple Inc. stock data.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">Python</span><span class="tech-tag">TensorFlow</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span>
+          </div>
+        </a>
+        <a href="https://github.com/aditya-prashar-1/Chatgpt" target="_blank" class="project-card">
+          <h3 class="text-xl font-bold text-cyan-400 mb-2">ChatGPT from Scratch</h3>
+          <p class="mb-4">Built a ChatGPT-like model focusing on transformer architecture, custom tokenization, and attention mechanisms.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">TensorFlow</span>
+          </div>
+        </a>
+        <a href="https://github.com/aditya-prashar-1/employee-managment-system" target="_blank" class="project-card">
+          <h3 class="text-xl font-bold text-cyan-400 mb-2">Employee Management Website</h3>
+          <p class="mb-4">Designed a scalable system for 5000+ employees with registration, updates, and data retrieval, optimized with MySQL.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">Java</span><span class="tech-tag">MySQL</span>
+          </div>
+        </a>
+        <a href="https://github.com/aditya-prashar-1/Pocket-Friendly" target="_blank" class="project-card">
+          <h3 class="text-xl font-bold text-cyan-400 mb-2">Pocket Friendly</h3>
+          <p class="mb-4">A finance tracking website to categorize expenses, monitor savings, and provide personalized investment advice.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">JavaScript</span><span class="tech-tag">CSS</span><span class="tech-tag">HTML</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title">Skills</h2>
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div class="card">
+            <h3 class="text-xl font-bold text-cyan-400 mb-4">Programming Languages</h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span class="skill-tag">C++</span><span class="skill-tag">C</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">R</span><span class="skill-tag">Matlab</span><span class="skill-tag">React.js</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-bold text-cyan-400 mb-4">Technologies</h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">NumPy</span><span class="skill-tag">Pandas</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-bold text-cyan-400 mb-4">Soft Skills</h3>
+            <div class="flex flex-wrap justify-center gap-2">
+              <span class="skill-tag">Leadership</span><span class="skill-tag">Event Management</span><span class="skill-tag">Public Speaking</span><span class="skill-tag">Time Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Achievements -->
+  <section id="education" class="py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div class="md:col-span-3">
+          <h2 class="section-title text-left">Education</h2>
+          <div class="space-y-6">
+            <div class="card">
+              <h3 class="text-xl font-bold text-white">Vellore Institute of Technology, Vellore</h3>
+              <p class="text-cyan-400 font-semibold">Bachelor of Technology, Computer Science</p>
+              <p class="text-gray-400">CGPA: 8.75 | Expected Graduation: 2025</p>
+            </div>
+            <div class="card">
+              <h3 class="text-xl font-bold text-white">Eicher School, Parwanoo</h3>
+              <p class="text-cyan-400 font-semibold">Class XII (CBSE)</p>
+              <p class="text-gray-400">Percentage: 86% | 2022</p>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <h2 class="section-title text-left">Achievements</h2>
+          <div class="card h-full">
+            <h3 class="text-xl font-bold text-white">CodelNovact Hackathon</h3>
+            <p class="text-cyan-400 font-semibold">Runner-up</p>
+            <p class="text-gray-300 mt-2">Achieved runner-up position for the project "Pocket Friendly" in the open innovation category.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="max-w-lg mx-auto text-center">
+        <p class="mb-8">I'm currently looking for new opportunities. Feel free to reach out via email or connect with me on social media.</p>
+        <button id="contact-button"
+                class="inline-block bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-cyan-700 transition-colors duration-300 shadow-lg shadow-cyan-500/30">
+          Say Hello
+        </button>
+        <div class="flex justify-center items-center space-x-6 mt-8">
+          <a href="https://github.com/aditya-prashar-1" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors">
+            <i data-feather="github" class="w-8 h-8"></i>
+          </a>
+          <a href="https://linkedin.com/in/Aditya-Prashar" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors">
+            <i data-feather="linkedin" class="w-8 h-8"></i>
+          </a>
+          <span class="text-gray-400 flex items-center">
+             <i data-feather="mail" class="w-6 h-6 mr-2"></i> adityaprashar1807@gmail.com
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Contact Modal -->
+<div id="contact-modal" class="modal-overlay hidden opacity-0">
+  <div class="modal-content scale-95">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-2xl font-bold text-white">Contact Me</h3>
+      <button id="close-modal-button" class="text-gray-400 hover:text-white">
+        <i data-feather="x" class="w-7 h-7"></i>
+      </button>
+    </div>
+    <form id="contact-form">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Your Name</label>
+        <input type="text" id="name" name="name" required class="w-full bg-[#0d1117] border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Your Email</label>
+        <input type="email" id="email" name="email" required class="w-full bg-[#0d1117] border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+      </div>
+      <div class="mb-6">
+        <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message</label>
+        <textarea id="message" name="message" rows="4" required class="w-full bg-[#0d1117] border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+      </div>
+      <p class="text-xs text-gray-500 mb-4">This will open your default email application.</p>
+      <div class="text-right">
+        <button type="submit" class="bg-cyan-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-cyan-700 transition-colors duration-300">
+          Send Message
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="py-4">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 border-t border-gray-800 pt-4">
+    <p>&copy; 2024 Aditya Prashar. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Feather Icons
+  feather.replace();
+
+  // --- Mobile Menu ---
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    const icon = mobileMenuButton.querySelector('i');
+    icon.setAttribute('data-feather', mobileMenu.classList.contains('hidden') ? 'menu' : 'x');
+    feather.replace();
+  });
+
+  // --- Smooth scroll & Close mobile menu on link click ---
+  document.querySelectorAll('a.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+      if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.querySelector('i').setAttribute('data-feather', 'menu');
+        feather.replace();
+      }
+    });
+  });
+
+  // --- Contact Modal Logic ---
+  const contactButton = document.getElementById('contact-button');
+  const contactModal = document.getElementById('contact-modal');
+  const closeModalButton = document.getElementById('close-modal-button');
+  const contactForm = document.getElementById('contact-form');
+  const modalContent = contactModal.querySelector('.modal-content');
+
+  const openModal = () => {
+    contactModal.classList.remove('hidden');
+    setTimeout(() => {
+      contactModal.classList.remove('opacity-0');
+      modalContent.classList.remove('scale-95');
+    }, 10);
+  };
+
+  const closeModal = () => {
+    modalContent.classList.add('scale-95');
+    contactModal.classList.add('opacity-0');
+    setTimeout(() => {
+      contactModal.classList.add('hidden');
+    }, 300);
+  };
+
+  contactButton.addEventListener('click', openModal);
+  closeModalButton.addEventListener('click', closeModal);
+  contactModal.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+      closeModal();
+    }
+  });
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+    const subject = `Message from ${name} via Portfolio`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+    window.location.href = `mailto:adityaprashar1807@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    closeModal();
+    contactForm.reset();
+  });
+
+
+  // --- CSS for Tags ---
+  const style = document.createElement('style');
+  style.textContent = `
+    .tech-tag {
+        background-color: #0d253f; /* A darker blue */
+        color: #38bdf8; /* Light blue */
+        @apply text-xs font-semibold px-2.5 py-1 rounded-full;
+    }
+    .skill-tag {
+        background-color: #0d253f;
+        color: #7dd3fc; /* Lighter blue */
+        @apply text-sm font-medium px-3 py-1.5 rounded-md;
+    }
+  `;
+  document.head.append(style);
+
+</script>
+</body>
+</html>
