@@ -102,15 +102,19 @@
             transform-style: preserve-3d;
             transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
         }
-        .carousel-card {
+        .carousel-card-wrapper {
             position: absolute;
             width: 280px; height: 350px;
             top: 10px; left: 10px;
             backface-visibility: hidden;
-            border-radius: 1rem;
-            overflow: hidden;
             transition: opacity 0.5s, transform 0.5s;
         }
+        .carousel-card {
+             width: 100%; height: 100%;
+             border-radius: 1rem;
+             overflow: hidden;
+        }
+
 
         /* --- CARD & UI STYLING --- */
         .glass-card {
@@ -215,7 +219,7 @@
     </nav>
 </header>
 
-<main class="container mx-auto px-4 pt-32">
+<main class="container mx-auto max-w-5xl px-4 pt-32">
 
     <!-- Hero Section -->
     <section id="hero" class="min-h-[80vh] flex flex-col-reverse md:flex-row items-center justify-center gap-12 text-center md:text-left">
@@ -281,9 +285,9 @@
          <div class="max-w-4xl mx-auto glass-card p-8 rounded-xl">
             <!-- Tabs -->
             <div class="flex justify-center border-b border-white/10 dark:border-white/10 light:border-black/10 mb-8">
-                <button data-tab="languages" class="skill-tab font-fira px-6 py-3 border-b-2 border-transparent active">Languages</button>
-                <button data-tab="libraries" class="skill-tab font-fira px-6 py-3 border-b-2 border-transparent">Libraries</button>
-                <button data-tab="platforms" class="skill-tab font-fira px-6 py-3 border-b-2 border-transparent">Platforms</button>
+                <button data-tab="languages" class="skill-tab font-fira px-6 py-3 border-b-2 border-transparent active text-slate-400 dark:text-slate-400 light:text-slate-600">Languages</button>
+                <button data-tab="libraries" class="skill-tab font-fira px-6 py-3 border-b-2 border-transparent text-slate-400 dark:text-slate-400 light:text-slate-600">Libraries</button>
+                <button data-tab="platforms" class="skill-tab font-fira px-6 py-3 border-b-2 border-transparent text-slate-400 dark:text-slate-400 light:text-slate-600">Platforms</button>
             </div>
             <!-- Tab Content -->
             <div id="skills-content">
@@ -292,42 +296,42 @@
                     <div class="flex items-center gap-4">
                         <i class="fab fa-python text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">Python</span><span>90%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">Python</span><span class="text-white dark:text-white light:text-black">90%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 90%"></div></div>
                         </div>
                     </div>
                      <div class="flex items-center gap-4">
                         <i class="fab fa-java text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">Java</span><span>75%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">Java</span><span class="text-white dark:text-white light:text-black">75%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 75%"></div></div>
                         </div>
                     </div>
                      <div class="flex items-center gap-4">
                         <i class="fas fa-keyboard text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">C++</span><span>80%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">C++</span><span class="text-white dark:text-white light:text-black">80%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 80%"></div></div>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
                         <i class="fab fa-react text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">React.js</span><span>70%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">React.js</span><span class="text-white dark:text-white light:text-black">70%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 70%"></div></div>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
                         <i class="fas fa-microchip text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">C</span><span>75%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">C</span><span class="text-white dark:text-white light:text-black">75%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 75%"></div></div>
                         </div>
                     </div>
                      <div class="flex items-center gap-4">
                         <i class="fab fa-r-project text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">R</span><span>60%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">R</span><span class="text-white dark:text-white light:text-black">60%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 60%"></div></div>
                         </div>
                     </div>
@@ -337,28 +341,28 @@
                     <div class="flex items-center gap-4">
                         <i class="fas fa-brain text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">PyTorch</span><span>85%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">PyTorch</span><span class="text-white dark:text-white light:text-black">85%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 85%"></div></div>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
                         <i class="fas fa-cogs text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">TensorFlow</span><span>80%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">TensorFlow</span><span class="text-white dark:text-white light:text-black">80%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 80%"></div></div>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
                         <i class="fas fa-leaf text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">NumPy</span><span>95%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">NumPy</span><span class="text-white dark:text-white light:text-black">95%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 95%"></div></div>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
                         <i class="fas fa-chart-bar text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">Pandas</span><span>95%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">Pandas</span><span class="text-white dark:text-white light:text-black">95%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 95%"></div></div>
                         </div>
                     </div>
@@ -368,28 +372,28 @@
                    <div class="flex items-center gap-4">
                         <i class="fas fa-database text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">MySQL</span><span>85%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">MySQL</span><span class="text-white dark:text-white light:text-black">85%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 85%"></div></div>
                         </div>
                     </div>
                      <div class="flex items-center gap-4">
                         <i class="fas fa-database text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">MongoDB</span><span>70%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">MongoDB</span><span class="text-white dark:text-white light:text-black">70%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 70%"></div></div>
                         </div>
                     </div>
                      <div class="flex items-center gap-4">
                         <i class="fas fa-project-diagram text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">n8n</span><span>90%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">n8n</span><span class="text-white dark:text-white light:text-black">90%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 90%"></div></div>
                         </div>
                     </div>
                      <div class="flex items-center gap-4">
                         <i class="fab fa-aws text-4xl primary-text w-10 text-center"></i>
                         <div class="w-full">
-                            <div class="flex justify-between mb-1"><span class="font-semibold">AWS</span><span>60%</span></div>
+                            <div class="flex justify-between mb-1"><span class="font-semibold text-white dark:text-white light:text-black">AWS</span><span class="text-white dark:text-white light:text-black">60%</span></div>
                             <div class="w-full bg-slate-700/50 light:bg-slate-300 rounded-full h-2.5"><div class="bg-gradient-to-r from-cyan-400 to-emerald-400 dark:from-cyan-400 dark:to-emerald-400 light:from-blue-400 light:to-sky-500 h-2.5 rounded-full skill-bar-fill" style="width: 60%"></div></div>
                         </div>
                     </div>
@@ -456,43 +460,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const projects = [
         {
             title: "Stock Market Prediction",
-            desc: "95% accuracy in predicting stock trends using advanced LSTM layers.",
+            url: "https://github.com/aditya-prashar-1/Stock-Market-Prediction",
             img: "https://raw.githubusercontent.com/aditya-prashar-1/images/main/stock-market.png",
             tech: ["Python", "TensorFlow", "LSTM"]
         },
         {
             title: "GPT from Scratch",
-            desc: "Built a minimal GPT-style language model to understand transformer architecture.",
+            url: "https://github.com/aditya-prashar-1/Chatgpt",
             img: "https://placehold.co/280x160/0A0A0A/EAEAEA?text=GPT+From+Scratch",
             tech: ["Python", "PyTorch", "NLP"]
         },
         {
             title: "Sentiment Analysis",
-            desc: "82% classification accuracy on Twitter data using LSTMs and BERT.",
+            url: "https://github.com/aditya-prashar-1",
             img: "https://placehold.co/280x160/0A0A0A/EAEAEA?text=Sentiment+Analysis",
             tech: ["Python", "BERT", "PyTorch"]
         },
         {
             title: "RAG Agent with n8n",
-            desc: "Automated document retrieval for internal queries using a RAG agent.",
+            url: "https://github.com/aditya-prashar-1",
             img: "https://raw.githubusercontent.com/aditya-prashar-1/images/main/n8n.png",
             tech: ["n8n", "RAG", "Automation"]
         },
         {
             title: "SOP Chatbot",
-            desc: "Google Chat bot for easy SOP access via dropdown-based selection.",
+            url: "https://github.com/aditya-prashar-1",
             img: "https://placehold.co/280x160/0A0A0A/EAEAEA?text=SOP+Chatbot",
             tech: ["Apps Script", "NotebookLM"]
         },
         {
             title: "Employee Management",
-            desc: "Scalable system for managing 5000+ employee records efficiently.",
+            url: "https://github.com/aditya-prashar-1/employee-managment-system",
             img: "https://raw.githubusercontent.com/aditya-prashar-1/images/main/employee.png",
             tech: ["Java", "MySQL", "JDBC"]
         },
         {
             title: "Pocket Friendly",
-            desc: "Award-winning finance tracker with expense categorization and advice.",
+            url: "https://github.com/aditya-prashar-1/Pocket-Friendly",
             img: "https://raw.githubusercontent.com/aditya-prashar-1/images/main/pocketfriendly.png",
             tech: ["JavaScript", "CSS", "HTML"]
         }
@@ -507,21 +511,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     projects.forEach((project, i) => {
         const rotationAngle = angle * i;
-        const card = document.createElement('div');
-        card.className = 'carousel-card glass-card';
-        card.style.transform = `rotateY(${rotationAngle}deg) translateZ(400px)`;
+        const cardWrapper = document.createElement('a');
+        cardWrapper.href = project.url;
+        cardWrapper.target = "_blank";
+        cardWrapper.rel = "noopener noreferrer";
+        cardWrapper.className = 'carousel-card-wrapper';
+        cardWrapper.style.transform = `rotateY(${rotationAngle}deg) translateZ(400px)`;
 
-        card.innerHTML = `
-            <img src="${project.img}" alt="${project.title}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/280x160/0A0A0A/EAEAEA?text=Project';">
-            <div class="p-4 text-left">
-                <h3 class="font-bold text-lg text-white dark:text-white light:text-black">${project.title}</h3>
-                <p class="text-sm text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">${project.desc}</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                    ${project.tech.map(t => `<span class="text-xs font-fira primary-text bg-black/20 dark:bg-black/20 light:bg-black/5 px-2 py-1 rounded">${t}</span>`).join('')}
+        cardWrapper.innerHTML = `
+            <div class="carousel-card glass-card">
+                <img src="${project.img}" alt="${project.title}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/280x160/0A0A0A/EAEAEA?text=Project';">
+                <div class="p-4 text-left">
+                    <h3 class="font-bold text-lg text-white dark:text-white light:text-black">${project.title}</h3>
+                    <p class="text-sm text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1">${project.desc}</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        ${project.tech.map(t => `<span class="text-xs font-fira primary-text bg-black/20 dark:bg-black/20 light:bg-black/5 px-2 py-1 rounded">${t}</span>`).join('')}
+                    </div>
                 </div>
             </div>
         `;
-        track.appendChild(card);
+        track.appendChild(cardWrapper);
     });
 
     const rotateCarousel = () => {
